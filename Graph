@@ -1,0 +1,57 @@
+"""first way"""
+# graph = [
+#     # KSR, Sek, Bahnhofstr, Hafenstrasse, Zelgstrasse, Bahnhof
+#     [ -1, 1, -1, -1, -1, -1],  # KSR
+#     [ 1, -1, 3, 5, 7, -1],     # Sek
+#     [ -1, 3, -1, -1, -1, 7],   # Bahnhofstrasse
+#     [ -1, 5, -1, -1, -1, 6],   # Hafenstrasse
+#     [ -1, 7, -1, -1, -1, 5],   # Zelgstrasse
+#     [ -1, -1, 7, 6, 5, -1],    # Bahnhof
+# ]
+
+# def has_direct_connection(matrix, n1, n2):
+#     if matrix [n1] [n2] > -1:
+#         return ("hat verbindung")
+#     else:
+#         return "hat keine Verbindung"
+
+
+# print(has_direct_connection(graph, 0, 2))
+
+"""second way"""
+graph = {
+    "ksr": {"sek": 1, "weitenzelg": 1},
+    "weitenzelg": {},
+    "sek": {"bahnhofstr": 3, "hafenstr": 5, "zelgstr": 7},
+    "bahnhofstr": {"bahnhof": 7, "sek": 1},
+    "hafenstr": {"bahnhof": 6},
+    "zelgstr": {"bahnhof": 5},
+    "bahnhof": {},
+}
+
+def has_direct_connection(list, n1, n2):
+    if n2 in list[n1]:
+        return True 
+    else:
+        return False
+print(has_direct_connection(graph, "sek", "ksr" ))
+
+#for k, v in graph.items():
+# for v in graph: print(graph[v])
+# for k, v in graph.items():
+"""
+def place_to_place(graph, from_place, to_place):
+    save_place = []
+    for v in graph.items():
+        if v == to_place:
+            return save_place.append(v)
+
+print(place_to_place(graph,"ksr", {"sek": 1, "weitenzelg": 1}))
+            
+
+"""
+for k, v in graph.items():
+    # print(v[0])
+    print(k)
+
+print(graph["ksr"])
